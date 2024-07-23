@@ -233,13 +233,9 @@ in {
     launchd.agents.activate-agenix = {
       enable = true;
       config = {
-        ProgramArguments = [mountingScript];
-        KeepAlive = {
-          Crashed = false;
-          SuccessfulExit = false;
-        };
+        Program = mountingScript;
+        KeepAlive = false;
         RunAtLoad = true;
-        ProcessType = "Background";
         StandardOutPath = "${config.home.homeDirectory}/Library/Logs/agenix/stdout";
         StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/agenix/stderr";
       };
